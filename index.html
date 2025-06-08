@@ -2,75 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Student Info Form</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f1f1f1;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #74abe2, #5563de);
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
     }
-
     .form-container {
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      width: 300px;
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 360px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      position: relative;
     }
-
     h2 {
       text-align: center;
+      margin-bottom: 24px;
+      color: #333;
     }
-
+    .form-container::before {
+      content: "";
+      position: absolute;
+      top: -20px; left: -20px; right: -20px; bottom: -20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 14px;
+      z-index: -1;
+    }
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 600;
+      color: #444;
+    }
     input[type="text"] {
       width: 100%;
-      padding: 10px;
-      margin: 8px 0 16px;
+      padding: 10px 14px;
+      margin-bottom: 20px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-
+    input[type="text"]:focus {
+      border-color: #5563de;
+      box-shadow: 0 0 4px rgba(85,99,222,0.3);
+      outline: none;
+    }
     button {
       width: 100%;
-      padding: 10px;
-      background-color: #007bff;
-      border: none;
+      padding: 12px;
+      background: #5563de;
       color: white;
+      border: none;
+      border-radius: 6px;
       font-size: 16px;
-      border-radius: 5px;
+      font-weight: 600;
       cursor: pointer;
+      transition: background 0.2s;
     }
-
     button:hover {
-      background-color: #0056b3;
+      background: #3e4ab8;
     }
   </style>
 </head>
 <body>
-
   <div class="form-container">
-    <h2>Enter Details</h2>
+    <h2>Student Info Form</h2>
     <form id="studentForm">
+      <label for="name">Name</label>
       <input type="text" id="name" placeholder="Enter your name" required />
+      <label for="roll">Roll Number</label>
       <input type="text" id="roll" placeholder="Enter roll number" required />
       <button type="submit">Submit</button>
     </form>
   </div>
-
   <script>
     document.getElementById("studentForm").addEventListener("submit", function(event) {
-      event.preventDefault(); // prevent page reload
+      event.preventDefault();
       const name = document.getElementById("name").value;
       const roll = document.getElementById("roll").value;
-      console.log("Submitted Name:", name);
-      console.log("Submitted Roll Number:", roll);
+      console.log("Name:", name);
+      console.log("Roll:", roll);
       alert(`Submitted!\nName: ${name}\nRoll Number: ${roll}`);
     });
   </script>
-
 </body>
 </html>
